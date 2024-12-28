@@ -29,5 +29,3 @@ EspSysUtil is a utility library for the ESP32 that provides several useful featu
    ```ini
    lib_deps =
        https://github.com/dewenni/EspSysUtil
- ```
- 
