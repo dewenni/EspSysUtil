@@ -64,7 +64,6 @@ public:
     bool doubleResetDetected;
 
   private:
-    const char *TAG = "DRD";
     uint32_t DRD_FLAG;
     unsigned long timeout;
     int address;

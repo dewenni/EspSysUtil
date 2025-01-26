@@ -1,14 +1,6 @@
 #include <EspSysUtil.h>
 
-#ifndef MY_LOGGER_SUPPORT
-#define MY_LOGGER_SUPPORT
-#define MY_LOGE(tag, format, ...) esp_log_write(ESP_LOG_ERROR, tag, "E (APP-%s): " format "\n", tag, ##__VA_ARGS__)
-#define MY_LOGI(tag, format, ...) esp_log_write(ESP_LOG_INFO, tag, "I (APP-%s): " format "\n", tag, ##__VA_ARGS__)
-#define MY_LOGW(tag, format, ...) esp_log_write(ESP_LOG_WARN, tag, "W (APP-%s): " format "\n", tag, ##__VA_ARGS__)
-#define MY_LOGD(tag, format, ...) esp_log_write(ESP_LOG_DEBUG, tag, "D (APP-%s): " format "\n", tag, ##__VA_ARGS__)
-#endif
-
-static const char *TAG = "EspSysUtil-Restart"; // LOG TAG
+static const char *TAG = "ESU-RST"; // LOG TAG
 static char localRestartReason[64];
 
 /**
@@ -74,13 +66,13 @@ const char *EspSysUtil::RestartReason::get() {
 void EspSysUtil::RestartReason::saveLocal(const char *reason) {
 
   if (!LittleFS.begin(true)) {
-    MY_LOGE(TAG, "LittleFS error");
+    ESP_LOGE(TAG, "LittleFS error");
     return;
   }
 
   File file = LittleFS.open("/restart_reason.txt", "w");
   if (!file) {
-    MY_LOGE(TAG, "Failed to open file for writing");
+    ESP_LOGE(TAG, "Failed to open file for writing");
     return;
   }
   file.println(reason);
@@ -101,7 +93,7 @@ bool EspSysUtil::RestartReason::readLocal() {
 
   File file = LittleFS.open("/restart_reason.txt", "r");
   if (!file) {
-    MY_LOGE(TAG, "Failed to open file for reading");
+    ESP_LOGE(TAG, "Failed to open file for reading");
     return false;
   }
 
