@@ -15,7 +15,7 @@ EspSysUtil::Wdt &EspSysUtil::Wdt::getInstance(uint32_t timeout, uint8_t idle_cor
 void EspSysUtil::Wdt::enable() {
 
   if (isInitialized) {
-    ESP_LOGW("WDT", "Watchdog timer is already initialized");
+    ESP_LOGW(TAG, "Watchdog timer is already initialized");
     return;
   }
 
@@ -25,17 +25,17 @@ void EspSysUtil::Wdt::enable() {
 
   if (esp_task_wdt_reconfigure(&twdt_config) == ESP_OK) {
     esp_task_wdt_add(loopTaskHandle);
-    ESP_LOGI("WDT", "Watchdog timer initialized for Loop Task");
+    ESP_LOGI(TAG, "Watchdog timer initialized for Loop Task");
     isInitialized = true;
   } else {
-    ESP_LOGE("WDT", "Failed to initialize Watchdog timer");
+    ESP_LOGE(TAG, "Failed to initialize Watchdog timer");
   }
 }
 
 void EspSysUtil::Wdt::disable() {
 
   if (!isInitialized) {
-    ESP_LOGW("WDT", "Watchdog timer is not initialized");
+    ESP_LOGW(TAG, "Watchdog timer is not initialized");
     return;
   }
 
@@ -44,7 +44,7 @@ void EspSysUtil::Wdt::disable() {
   }
 
   esp_task_wdt_delete(loopTaskHandle);
-  ESP_LOGI("WDT", "Watchdog timer de-initialized");
+  ESP_LOGI(TAG, "Watchdog timer de-initialized");
   isInitialized = false;
 }
 
