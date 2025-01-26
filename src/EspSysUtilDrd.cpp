@@ -71,13 +71,12 @@ void EspSysUtil::DRD32::setRecentlyResetFlag() {
   doubleResetDetectorFlag = DRD_FLAG_SET;
   DRD_FLAG = DRD_FLAG_SET;
   File file = LittleFS.open(DRD_FILENAME, "w");
-  ESP_LOGD(TAG, "Saving DRD file...");
   if (file) {
     file.write((uint8_t *)&DRD_FLAG, sizeof(DRD_FLAG));
     file.close();
     ESP_LOGD(TAG, "Saving DRD file OK");
   } else {
-    ESP_LOGD(TAG, "Saving DRD file failed");
+    ESP_LOGE(TAG, "Saving DRD file failed");
   }
 }
 
@@ -87,13 +86,12 @@ void EspSysUtil::DRD32::clearRecentlyResetFlag() {
 
   // LittleFS / SPIFFS code
   File file = LittleFS.open(DRD_FILENAME, "w");
-  ESP_LOGD(TAG, "Saving DRD file...");
 
   if (file) {
     file.write((uint8_t *)&DRD_FLAG, sizeof(DRD_FLAG));
     file.close();
     ESP_LOGD(TAG, "Saving DRD file OK");
   } else {
-    ESP_LOGD(TAG, "Saving DRD file failed");
+    ESP_LOGE(TAG, "Saving DRD file failed");
   }
 }
