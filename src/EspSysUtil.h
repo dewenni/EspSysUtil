@@ -52,26 +52,22 @@ public:
     bool isActive() const { return otaState; }
   };
 
-  class DRD32 {
+  class MRD32 {
   public:
-    DRD32(int timeout);
+    MRD32(uint32_t timeout, uint32_t requiredResets);
 
-    bool detectDoubleReset();
+    bool detectMultipleResets();
     bool waitingForDRD();
     void loop();
     void stop();
 
-    bool doubleResetDetected;
-
   private:
-    uint32_t DRD_FLAG;
-    unsigned long timeout;
-    int address;
+    uint32_t timeout, lastResetTime;
+    int requiredResets, resetCount;
     bool waitingForDoubleReset;
 
-    bool detectRecentlyResetFlag();
-    void setRecentlyResetFlag();
-    void clearRecentlyResetFlag();
-    uint32_t doubleResetDetectorFlag;
+    void loadResetStateNVS();
+    void saveResetStateNVS();
+    void clearResetStateNVS();
   };
 };

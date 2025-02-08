@@ -1,9 +1,15 @@
-# v1.0.1
+# v1.1.0
 
 ## what's new
 
-some minor changes in log messages
+change "Double-Reset-Detection" to "Multi-Reset-Detection"
+Now you can configure that it needs more than 2 restarts within given timeout
+
+```c++
+MRD32(uint32_t timeout, uint32_t requiredResets)
+```
+
 
 ## changelog
 
-- [CLEAN] remove log macros and change LogLevel for some log messages
+- [CHANGE] remove DRD function and replace with new MRD

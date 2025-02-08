@@ -1,7 +1,7 @@
 {
     "name": "EspSysUtil",
-    "version": "1.0.1",
-    "description": "A utility library for ESP32 with support for Restart Reasons, Watchdog Timer, OTA state, and Double Reset Detection.",
+    "version": "1.1.0",
+    "description": "A utility library for ESP32 with support for Restart Reasons, Watchdog Timer, OTA state, and Multi-Reset-Detection.",
     "keywords": ["esp32", "utilities", "watchdog", "ota", "reset", "detection"],
     "repository": {
         "type": "git",

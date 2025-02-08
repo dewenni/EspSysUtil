@@ -5,14 +5,14 @@ EspSysUtil is a utility library for the ESP32 that provides several useful featu
 - Managing restart reasons (Restart Reason)
 - Watchdog Timer (WDT)
 - OTA state management (Over-The-Air Updates)
-- Double Reset Detection (DRD)
+- Multi-Reset-Detection (MRD)
 
 ## Features
 
 - **Restart Reason**: Store and retrieve reasons for device restarts.
 - **Watchdog Timer**: Simple access to the ESP32 Task Watchdog Timer.
 - **OTA**: Manage the OTA update state.
-- **Double Reset Detection (DRD)**: Detect two consecutive resets within a configurable timeout.
+- **Multi-Reset-Detection (MRD)**: Detect multiple consecutive resets within a configurable timeout.
 
 ## Installation
 
